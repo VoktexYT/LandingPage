@@ -95,6 +95,13 @@
             `
         };
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y2RHXDQ04"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-0Y2RHXDQ04');
+    </script>
 </head>
 <body>
     <div class="container">
@@ -113,7 +120,12 @@
             // Change html content
             document.querySelector('#page1').style.display = "none";
             document.querySelector('#page2').style.display = "block";
-            gtag('event', 'cta_click', { event_category: 'CTA', event_label: 'beta_signup' });
+
+            gtag('event', 'beta_click', {
+                'event_category': 'CTA',
+                'event_label': 'Access Beta Button',
+                'value': 1
+            });
         }
 
         document.addEventListener('DOMContentLoaded', function() {
