@@ -85,38 +85,43 @@
             }
         }
     </style>
+    <script>
+        let saasData = {
+            name: "MicroAI",
+            desc: `
+                Transform your workflow with our intelligent micro SaaS solution. 
+                Streamline processes, boost productivity, and unlock new possibilities with AI-powered 
+                automation designed for modern businesses.
+            `
+        };
+    </script>
 </head>
 <body>
     <div class="container">
         <div id="page1">
-            <h1 class="title">MicroAI</h1>
-                    
-            <p class="description">
-                Transform your workflow with our intelligent micro SaaS solution. Streamline processes, boost productivity, and unlock new possibilities with AI-powered automation designed for modern businesses.
-            </p>
-            
-            <button class="cta-button" onclick="handleBetaAccess()">
-                Access to the beta
-            </button>
+            <h1 class="title" id="saasName"></h1>        
+            <p class="description" id="saasDesc"></p>
+            <button class="cta-button" onclick="handleBetaAccess()">Access to the beta</button>
         </div>
-
         <div id="page2" style="display: none;">
             <h1 class="title">Thank you for your interest! Beta access coming soon.</h1>
         </div>
-        
     </div>
 
     <script>
         function handleBetaAccess() {
-            const page1 = document.querySelector('#page1');
-            const page2 = document.querySelector('#page2');
-            page1.style.display = "none";
-            page2.style.display = "block";
+            // Change html content
+            document.querySelector('#page1').style.display = "none";
+            document.querySelector('#page2').style.display = "block";
             gtag('event', 'cta_click', { event_category: 'CTA', event_label: 'beta_signup' });
         }
 
-        // Optional: Add smooth entrance animation
         document.addEventListener('DOMContentLoaded', function() {
+            // Add text contents
+            document.querySelector("#saasName").textContent = saasData.name;
+            document.querySelector("#saasDesc").textContent = saasData.desc;
+
+            // Add animations
             const container = document.querySelector('.container');
             container.style.opacity = '0';
             container.style.transform = 'translateY(20px)';
