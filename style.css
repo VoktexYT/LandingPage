@@ -1,0 +1,285 @@
+/* Styles existants conservés */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: white;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.sub-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.cta-button {
+    background-color: #dc2626;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.3);
+}
+
+.cta-button:hover {
+    background-color: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(220, 38, 38, 0.4);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* NOUVEAUX STYLES POUR LA PAGE 2 UNIQUEMENT */
+
+/* Container spécifique pour page2 */
+#page2 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Texte d'introduction sur page2 */
+#page2 p:first-of-type {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+}
+
+/* Formulaire */
+#page2 form {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    max-width: 450px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Input email */
+#page2 input[type="email"] {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background-color: white;
+    color: #333;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+#page2 input[type="email"]:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    transform: translateY(-1px);
+}
+
+#page2 input[type="email"]::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+/* Bouton submit */
+#page2 button[type="submit"] {
+    width: 100%;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+#page2 button[type="submit"]:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
+#page2 button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Effet de brillance sur le bouton */
+#page2 button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+#page2 button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+/* Texte de confidentialité */
+#page2 .privacy {
+    font-size: 0.9rem;
+    color: #64748b;
+    font-weight: 400;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Animation d'entrée */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#credit, #credit2 {
+    position: absolute;
+    left: 10px;
+    top: calc(100vh - 40px);
+    user-select: none;
+    color: grey;
+    font-weight: 700;
+}
+
+#credit2 {
+    left: calc(100vw - 250px);
+}
+
+a {
+    text-decoration: none;
+    color: #773737;
+}
+
+/* Responsive pour page2 */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .description {
+        font-size: 1.1rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    #page2 input[type="email"] {
+        padding: 14px 16px;
+        font-size: 16px; /* Évite le zoom sur iOS */
+    }
+    
+    #page2 button[type="submit"] {
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+    
+    #page2 p:first-of-type {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+}
+
+
+@media (max-width: 517px) {
+    #credit {
+        position: absolute;
+        top: calc(100vh - 60px);
+    }
+}
+
+@media (max-height: 350px) {
+    body {
+        overflow:visible;
+        /* height: 200vh; */
+    }
+
+    .container {
+        /* display: block; */
+    }
+
+    .description {
+        /* width: 500px; */
+    }
+
+
+}
+
+@media (max-height: 305px) {
+    .container {
+        overflow: visible;
+        height: 200px;
+    }
+  
+    #credit, #credit2 {
+        position: relative;
+        /* top: calc(100vh + 50px); */
+    }
+}

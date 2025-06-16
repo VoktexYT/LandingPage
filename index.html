@@ -3,119 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroAI - Revolutionary Micro SaaS</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            overflow-y: hidden;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: white;
-            color: #333;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: black;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-
-        .description {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .user-counter {
-            font-size: 1rem;
-            color: #888;
-            margin-bottom: 3rem;
-            font-weight: 500;
-        }
-
-        .user-count {
-            color: #dc2626;
-            font-weight: 1000;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .user-count.animate {
-            transform: scale(1.2);
-            color: #b91c1c;
-        }
-
-        .cta-button {
-            background-color: #dc2626;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            padding: 16px 32px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.3);
-        }
-
-        .cta-button:hover {
-            background-color: #b91c1c;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px 0 rgba(220, 38, 38, 0.4);
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2.5rem;
-            }
-            
-            .description {
-                font-size: 1.1rem;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-        }
-    </style>
+    <title>Ubert Guertin</title>
+    <link rel="stylesheet" href="./style.css">
     <script>
         let saasData = {
-            name: "MicroAI",
+            name: "Mailer.ai",
             desc: `
-                Transform your workflow with our intelligent micro SaaS solution. 
-                Streamline processes, boost productivity, and unlock new possibilities with AI-powered 
-                automation designed for modern businesses.
+                Automatisez vos emails répétitifs avec l'IA <br>
+                Économisez 5h par semaine
             `,
-            userJoin: 0
+            author: "Ubert Guertin",
+            year: "2025"
         };
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y2RHXDQ04"></script>
@@ -128,77 +26,30 @@
 </head>
 <body>
     <div class="container">
-        <div id="page1">
+        <div id="page1" style="">
             <h1 class="title" id="saasName"></h1>        
             <p class="description" id="saasDesc"></p>
-            <div class="user-counter">
-                <span class="user-count" id="userCount"></span> utilisateurs déjà inscrits
-            </div>
             <button class="cta-button" onclick="handleBetaAccess()">🚀 Je veux essayer l’outil !</button>
         </div>
+
         <div id="page2" style="display: none;">
-            <h1 class="title">Thank you for your interest! Beta access coming soon.</h1>
+            <h1 class="sub-title">Merci de votre intérêt !</h1>
+            <p style="margin: 0 0 5px 0;">Pour accéder à la bêta en priorité</p>
+            <form action="https://formspree.io/f/mldnnvkv" method="POST">
+                <input type="email" name="email" placeholder="Entrez votre email" required>
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit" onsubmit="disableForm()" id="sendFormBtn">Réserver ma place</button>
+            </form>
+
+            <p class="privacy">Pas de spam, juste l'accès prioritaire 🔒</p>
         </div>
     </div>
 
-    <script>
-        function updateUserCount() {
-            const userCountElement = document.querySelector('#userCount');
-            userCountElement.textContent = saasData.userJoin;
-            
-            // Animation du nombre
-            userCountElement.classList.add('animate');
-            setTimeout(() => {
-                userCountElement.classList.remove('animate');
-            }, 300);
-        }
+    <p id="credit"><span id="saasAuthor"></span> • <a href="https://www.youtube.com/@voktex" target="_blank">Voktex Youtube</a></p>
+    <p id="credit2">© <span id="saasYear"></span> – Tous droits réservés</p>
 
-        function handleBetaAccess() {
-            // Incrémenter le compteur
-            saasData.userJoin++;
-            updateUserCount();
 
-            // Petit délai pour voir l'animation avant de changer de page
-            setTimeout(() => {
-                // Change html content
-                const page1 = document.querySelector('#page1');
-                const page2 = document.querySelector('#page2');
-                page1.style.transition = '500ms';
-                page1.style.opacity = '0';
 
-                setTimeout(() => {
-                    page1.style.display = "none";
-                    page2.style.display = "block";
-                }, 600)
-
-            }, 400);
-
-            gtag('event', 'beta_click', {
-                'event_category': 'CTA',
-                'event_label': 'Access Beta Button',
-                'value': 1
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add text contents
-            document.querySelector("#saasName").textContent = saasData.name;
-            document.querySelector("#saasDesc").textContent = saasData.desc;
-            
-            // Initialize user count
-            updateUserCount();
-
-            // Add animations
-            const container = document.querySelector('.container');
-            container.style.opacity = '0';
-            container.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                container.style.transition = 'all 0.8s ease';
-                container.style.opacity = '1';
-                container.style.transform = 'translateY(0)';
-            }, 100);
-        });
-    </script>
+    <script src="./script.js"></script>
 </body>
 </html>
