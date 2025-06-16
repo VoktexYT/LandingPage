@@ -21,7 +21,6 @@
             color: #333;
             line-height: 1.6;
         }
-
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -46,8 +45,27 @@
             font-size: 1.2rem;
             color: #666;
             max-width: 600px;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             line-height: 1.7;
+        }
+
+        .user-counter {
+            font-size: 1rem;
+            color: #888;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .user-count {
+            color: #dc2626;
+            font-weight: 1000;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .user-count.animate {
+            transform: scale(1.2);
+            color: #b91c1c;
         }
 
         .cta-button {
@@ -96,7 +114,8 @@
                 Transform your workflow with our intelligent micro SaaS solution. 
                 Streamline processes, boost productivity, and unlock new possibilities with AI-powered 
                 automation designed for modern businesses.
-            `
+            `,
+            userJoin: 0
         };
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0Y2RHXDQ04"></script>
@@ -112,7 +131,10 @@
         <div id="page1">
             <h1 class="title" id="saasName"></h1>        
             <p class="description" id="saasDesc"></p>
-            <button class="cta-button" onclick="handleBetaAccess()">Access to the beta</button>
+            <div class="user-counter">
+                <span class="user-count" id="userCount"></span> utilisateurs déjà inscrits
+            </div>
+            <button class="cta-button" onclick="handleBetaAccess()">🚀 Je veux essayer l’outil !</button>
         </div>
         <div id="page2" style="display: none;">
             <h1 class="title">Thank you for your interest! Beta access coming soon.</h1>
@@ -120,10 +142,36 @@
     </div>
 
     <script>
+        function updateUserCount() {
+            const userCountElement = document.querySelector('#userCount');
+            userCountElement.textContent = saasData.userJoin;
+            
+            // Animation du nombre
+            userCountElement.classList.add('animate');
+            setTimeout(() => {
+                userCountElement.classList.remove('animate');
+            }, 300);
+        }
+
         function handleBetaAccess() {
-            // Change html content
-            document.querySelector('#page1').style.display = "none";
-            document.querySelector('#page2').style.display = "block";
+            // Incrémenter le compteur
+            saasData.userJoin++;
+            updateUserCount();
+
+            // Petit délai pour voir l'animation avant de changer de page
+            setTimeout(() => {
+                // Change html content
+                const page1 = document.querySelector('#page1');
+                const page2 = document.querySelector('#page2');
+                page1.style.transition = '500ms';
+                page1.style.opacity = '0';
+
+                setTimeout(() => {
+                    page1.style.display = "none";
+                    page2.style.display = "block";
+                }, 600)
+
+            }, 400);
 
             gtag('event', 'beta_click', {
                 'event_category': 'CTA',
@@ -136,6 +184,9 @@
             // Add text contents
             document.querySelector("#saasName").textContent = saasData.name;
             document.querySelector("#saasDesc").textContent = saasData.desc;
+            
+            // Initialize user count
+            updateUserCount();
 
             // Add animations
             const container = document.querySelector('.container');
