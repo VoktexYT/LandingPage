@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroAI - Revolutionary Micro SaaS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: black;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .description {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            background-color: #dc2626;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px 0 rgba(220, 38, 38, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .description {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="page1">
+            <h1 class="title">MicroAI</h1>
+                    
+            <p class="description">
+                Transform your workflow with our intelligent micro SaaS solution. Streamline processes, boost productivity, and unlock new possibilities with AI-powered automation designed for modern businesses.
+            </p>
+            
+            <button class="cta-button" onclick="handleBetaAccess()">
+                Access to the beta
+            </button>
+        </div>
+
+        <div id="page2" style="display: none;">
+            <h1 class="title">Thank you for your interest! Beta access coming soon.</h1>
+        </div>
+        
+    </div>
+
+    <script>
+        function handleBetaAccess() {
+            const page1 = document.querySelector('#page1');
+            const page2 = document.querySelector('#page2');
+            page1.style.display = "none";
+            page2.style.display = "block";
+            gtag('event', 'cta_click', { event_category: 'CTA', event_label: 'beta_signup' });
+        }
+
+        // Optional: Add smooth entrance animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 0.8s ease';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
